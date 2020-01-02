@@ -1,2 +1,3 @@
-# config
-Linux workspace configuration files
+# Config
+
+These are my Linux workspace configuration files.
