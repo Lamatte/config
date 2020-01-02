@@ -4,6 +4,9 @@ export SPRING_PROFILES_ACTIVE=local
 export TERM=xterm-256color
 export FZF_DEFAULT_COMMAND='fd --type f'
 
+# Disable bell
+xset b off
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$PATH:/home/emcu7421/.local/bin
