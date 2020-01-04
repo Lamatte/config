@@ -16,6 +16,8 @@ myConfig = desktopConfig
   { terminal = "urxvt"
   , modMask  = mod4Mask
   , startupHook   = myStartupHook
+  , focusedBorderColor = "#5e8d87"
+  , normalBorderColor = "#282a2e"
   }
 
 myStartupHook =
