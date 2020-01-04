@@ -19,8 +19,5 @@ myConfig = desktopConfig
   }
 
 myStartupHook =
-  spawn "xsetroot -solid '#333333'"
-  --spawn
-  --    "compton --backend glx --xrender-sync --xrender-sync-fence -fcCz -l -17 -t -17"
-  --  <+> spawn "xsetroot -solid '#333333'"
-
+  spawn "picom --config ~/.xmonad/picom.conf"
+  <+> spawn "feh --bg-scale ~/.xmonad/mont-saint-michel.jpg"
