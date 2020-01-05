@@ -2,6 +2,7 @@ import XMonad
 import XMonad.Config.Desktop
 import XMonad.Config.Azerty
 import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.SetWMName
 
 main = xmonad =<< statusBar myBar myPP toggleStrutsKey myConfig
 
@@ -23,5 +24,7 @@ myConfig = azertyConfig
   }
 
 myStartupHook =
-  spawn "picom --config ~/.xmonad/picom.conf"
+  -- Hack to have java guis work within xmonad
+  setWMName "LG3D"
+  <+> spawn "picom --config ~/.xmonad/picom.conf"
   <+> spawn "feh --bg-scale ~/.xmonad/wallpapers/blurred.jpg"
