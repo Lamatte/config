@@ -38,9 +38,9 @@ Config { font = "xft:Hack:size=9:bold:antialias=true"
                                        -- charged status
                                        , "-i"	, "<fc=#006000>Charged</fc>"
                              ] 50
+                    , Run StdinReader
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%cpu% | %memory% * %swap% | %wlp2s0wi% }\
-                    \{ <fc=#ee9a00>%date%</fc> | %battery%"
+       , template = "%cpu% | %memory% * %swap% | %wlp2s0wi%}%StdinReader%{%date% | %battery%"
        }
