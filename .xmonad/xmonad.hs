@@ -24,4 +24,4 @@ myConfig = azertyConfig
 
 myStartupHook =
   spawn "picom --config ~/.xmonad/picom.conf"
-  <+> spawn "feh --bg-scale ~/.xmonad/wallpapers/azulejos.jpg"
+  <+> spawn "feh --bg-scale ~/.xmonad/wallpapers/blurred.jpg"
