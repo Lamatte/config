@@ -1,5 +1,6 @@
 import XMonad
 import XMonad.Config.Desktop
+import XMonad.Config.Azerty
 import XMonad.Hooks.DynamicLog
 
 main = xmonad =<< statusBar myBar myPP toggleStrutsKey myConfig
@@ -7,12 +8,13 @@ main = xmonad =<< statusBar myBar myPP toggleStrutsKey myConfig
 myBar = "xmobar"
 
 myPP = xmobarPP
-  { ppCurrent = xmobarColor "#429942" "" . wrap "<" ">"
+  { ppCurrent = xmobarColor "#429942" ""
+  . wrap "<" ">"
   }
 
 toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
 
-myConfig = desktopConfig
+myConfig = azertyConfig
   { terminal = "urxvt"
   , modMask  = mod4Mask
   , startupHook   = myStartupHook
@@ -22,4 +24,4 @@ myConfig = desktopConfig
 
 myStartupHook =
   spawn "picom --config ~/.xmonad/picom.conf"
-  <+> spawn "feh --bg-scale ~/.xmonad/mont-saint-michel.jpg"
+  <+> spawn "feh --bg-scale ~/.xmonad/wallpapers/azulejos.jpg"
