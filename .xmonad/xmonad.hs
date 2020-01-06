@@ -3,7 +3,7 @@ import XMonad.Config.Desktop
 import XMonad.Config.Azerty
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.SetWMName
-import XMonad.Util.EZConfig (additionalKeys)
+import XMonad.Util.EZConfig (additionalKeys, additionalKeysP)
 
 main = xmonad =<< statusBar myBar myPP toggleStrutsKey myConfig
 
@@ -22,7 +22,7 @@ myConfig = azertyConfig
   , startupHook   = myStartupHook
   , focusedBorderColor = "#5e8d87"
   , normalBorderColor = "#282a2e"
-  } `additionalKeys` myKeys
+  } `additionalKeys` myAdditionalKeys `additionalKeysP` myKeys
 
 myStartupHook =
   -- Hack to have java guis work within xmonad
@@ -31,6 +31,11 @@ myStartupHook =
   <+> spawn "feh --bg-scale ~/.xmonad/wallpapers/blurred.jpg"
   <+> spawn "xautolock -time 5 -locker slock"
 
-myKeys =
+myAdditionalKeys =
   [ ((mod4Mask .|. shiftMask, xK_z), spawn "slock")
+  ]
+
+myKeys =
+  [ ("<XF86MonBrightnessUp>", spawn "~/.xmonad/brightness.sh +5")
+  , ("<XF86MonBrightnessDown>", spawn "~/.xmonad/brightness.sh -5")
   ]
