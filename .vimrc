@@ -49,6 +49,7 @@ endif
 set hidden
 
 " Language client servers
+let g:LanguageClient_loggingFile =  expand('/tmp/LanguageClient.log')
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['/usr/bin/rustup', 'run', 'stable', 'rls'],
     \ 'haskell': ['hie-wrapper'],
