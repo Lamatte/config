@@ -17,7 +17,7 @@ export DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 echo "Using configuration from directory $DIR"
 
 echo "Installing packages..."
-sudo pacman -S --needed vim picom slock xmonad feh xautolock dmenu
+sudo pacman -S --needed vim rxvt-unicode picom slock xmonad feh xautolock dmenu
 
 echo "Installing Vundle.vim..."
 if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
