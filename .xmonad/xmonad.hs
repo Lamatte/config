@@ -45,6 +45,7 @@ myKeys =
   ]
 
 myLayout = avoidStruts $
-  Tall 1 (10/100) (2/3)
-  ||| Grid
+  Tall 1 (2/100) (2/3)
+  ||| Mirror (Tall 1 (2/100) (2/3))
   ||| Full
+  ||| Grid
