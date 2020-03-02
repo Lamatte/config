@@ -71,7 +71,7 @@ DEFAULT_USER=emcu7421
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git cargo rust stack oc cf mvn minikube kubectl
+  git cargo rust stack oc cf mvn minikube kubectl golang
 )
 
 source $ZSH/oh-my-zsh.sh
