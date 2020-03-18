@@ -27,7 +27,7 @@ else
 fi
 
 echo "Installing resource files..."
-for resource in .vimrc .xmonad .xmobarrc .zshrc .Xresources; do
+for resource in .vimrc .xmonad .xmobarrc .zshrc .Xresources set-proxy.sh; do
   install_resource $resource
 done
 
