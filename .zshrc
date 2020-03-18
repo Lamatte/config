@@ -1,5 +1,7 @@
 alias vi="vim"
 alias vpn="sudo openvpn --config ~/VPN/clientUDP-CHA-ext.conf"
+alias proxy-enable="export http_proxy=\"http://proxy.si.francetelecom.fr:8080\"; export https_proxy=\"http://proxy.si.francetelecom.fr:8080\""
+alias proxy-disable="unset http_proxy https_proxy"
 export SPRING_PROFILES_ACTIVE=local
 export TERM=xterm-256color
 export FZF_DEFAULT_COMMAND='fd --type f'
