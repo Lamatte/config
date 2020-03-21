@@ -34,4 +34,5 @@ done
 echo "Installing vim plugins..."
 vim +PluginInstall +qall
 
-
+echo "Installing security..."
+sudo cp xorg.conf/* /usr/share/X11/xorg.conf.d
