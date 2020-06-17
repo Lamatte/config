@@ -3,6 +3,7 @@ if [ $? = 0 ]; then
   echo "Orange proxy enabled"
   export http_proxy="http://localhost:3128"
   export https_proxy="http://localhost:3128"
+  sudo docker restart cntlm
   #export http_proxy="http://proxypac.si.francetelecom.fr:8080"
   #export https_proxy="http://proxypac.si.francetelecom.fr:8080"
 else
