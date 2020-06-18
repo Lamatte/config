@@ -1,5 +1,6 @@
 alias vi="vim"
 alias vpn="sudo openvpn --config ~/VPN/clientUDP-CHA-ext.conf"
+alias dual="xrandr --output eDP-1 --primary --left-of DP-1 --output DP-1 --auto"
 alias set-proxy=". ~/set-proxy.sh"
 export SPRING_PROFILES_ACTIVE=local
 export TERM=xterm-256color
