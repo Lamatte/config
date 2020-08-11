@@ -33,7 +33,7 @@ myStartupHook =
   setWMName "LG3D"
   <+> spawn "picom --config ~/.xmonad/picom.conf"
   <+> spawn "feh --bg-scale ~/.xmonad/wallpapers/blurred.jpg"
-  <+> spawn "xautolock -time 5 -locker slock"
+  <+> spawn "xautolock -time 10 -locker slock"
 
 myAdditionalKeys =
   [ ((mod4Mask .|. shiftMask, xK_z), spawn "slock")
