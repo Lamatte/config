@@ -1,6 +1,6 @@
 Config { font = "xft:Hack:size=9:bold:antialias=true"
        -- font = "-misc-fixed-*-*-*-*-10-*-*-*-*-*-*-*"
-       , additionalFonts = []
+       , additionalFonts = [ "xft:FontAwesome:pixelsize=13:antialias=true:hinting=true" ]
        , borderColor = "black"
        , border = TopB
        , bgColor = "black"
@@ -18,12 +18,12 @@ Config { font = "xft:Hack:size=9:bold:antialias=true"
        , overrideRedirect = True
        , commands = [ Run Wireless "wlp2s0" ["-t","<essid>",
                                           "--normal","green","--high","red"] 10
-                    , Run Cpu ["-L","3","-H","50",
+                    , Run Cpu ["-t", "<fn=1></fn> <total>%", "-L","3","-H","50",
                                "--normal","green","--high","red"] 10
-                    , Run Memory ["-t","Mem: <usedratio>%"] 10
+                    , Run Memory ["-t"," <usedratio>%"] 10
                     , Run Swap [] 10
                     , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
-                    , Run Battery        [ "--template" , "Batt: <acstatus>"
+                    , Run Battery        [ "--template" , "<fn=1></fn> <acstatus>"
                              , "--Low"      , "10"        -- units: %
                              , "--High"     , "80"        -- units: %
                              , "--low"      , "darkred"
@@ -42,5 +42,5 @@ Config { font = "xft:Hack:size=9:bold:antialias=true"
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%cpu% | %memory% * %swap% | %wlp2s0wi%}%StdinReader%{%date% | %battery%"
+       , template = "<fn=1></fn> %wlp2s0wi%}%StdinReader%{<fn=1></fn> %date%  %battery%"
        }
