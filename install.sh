@@ -1,5 +1,18 @@
 #!/bin/bash
 
+function header()  {
+  echo -e "\e[32m\e[1m$*\e[0m"
+}
+
+function install_yay() {
+  header "Installing yay..."
+  cd /opt
+  sudo git clone https://aur.archlinux.org/yay-git.git
+  sudo chown -R emcu7421:wheel ./yay-git
+  cd yay-git
+  makepkg -si
+}
+
 function install_resource() {
   if [ -L ~/$1 ]; then
     echo Link to $1 already exists
@@ -16,24 +29,30 @@ function install_resource() {
 export DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 echo "Using configuration from directory $DIR"
 
-echo "Installing packages..."
-sudo pacman -S --needed vim rxvt-unicode picom slock xmonad feh xautolock dmenu clamav
+header "Installing packages..."
+sudo pacman -S --needed git vim rxvt-unicode picom slock xmonad xmobar feh xautolock dmenu clamav
 
-echo "Installing Vundle.vim..."
+header "Checking yay..."
+which yay || install_yay
+
+header "Installing AUR packages"
+yay -S --needed awesome-terminal-fonts
+
+header "Installing Vundle.vim..."
 if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 else
   echo "Vundle.vim is already installed, consider pulling changes"
 fi
 
-echo "Installing resource files..."
+header "Installing resource files..."
 for resource in .vimrc .xmonad .xmobarrc .zshrc .Xresources set-proxy.sh; do
   install_resource $resource
 done
 
-echo "Installing vim plugins..."
+header "Installing vim plugins..."
 vim +PluginInstall +qall
 
-echo "Installing security..."
+header "Installing security..."
 sudo cp xorg.conf/* /usr/share/X11/xorg.conf.d
 sudo freshclam
