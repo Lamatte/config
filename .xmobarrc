@@ -23,15 +23,15 @@ Config { font = "xft:Hack:size=9:bold:antialias=true"
                     , Run Swap [] 10
                     , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
                     , Run Battery        [ "--template" , "<acstatus>"
-                             , "-L" , "20"        -- units: %
-                             , "-H" , "80"        -- units: %
+                             , "-L" , "25"        -- units: %
+                             , "-H" , "75"        -- units: %
                              , "-l" , "darkred"
                              , "--" -- battery specific options
                                        , "-o"	        , "<left>%"      -- discharging status
                                        , "-O"	        , "<fn=1></fn>" -- AC "on" status
                                        , "-i"         , "<fn=1></fn>" -- charged status
-                                       , "-L"         , "20"           -- units: %
-                                       , "-H"         , "80"           -- units: %
+                                       , "-L"         , "25"           -- units: %
+                                       , "-H"         , "75"           -- units: %
                                        , "--highs"    , "<fn=1> </fn>"
                                        , "--mediums"  , "<fn=1> </fn>"
                                        , "--lows"     , "<fn=1> </fn>"
