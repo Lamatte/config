@@ -4,7 +4,7 @@ Config { font = "xft:Hack:size=9:bold:antialias=true"
        , borderColor = "black"
        , border = TopB
        , bgColor = "black"
-       , fgColor = "grey"
+       , fgColor = "darkgrey"
        , alpha = 200
        , position = Top
        , textOffset = -1

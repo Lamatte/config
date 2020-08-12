@@ -15,7 +15,7 @@ main = xmonad =<< statusBar "xmobar" myPP toggleStrutsKey myConfig
 toggleStrutsKey XConfig { XMonad.modMask = modMask } = (modMask, xK_b)
 
 myPP = xmobarPP
-  { ppCurrent = xmobarColor "#429942" "" . wrap "[" "]"
+  { ppCurrent = xmobarColor "#5e8d87" "" . wrap "[" "]"
   , ppOrder   = \(ws:l:t:_)   -> [ws,l]
   }
 
