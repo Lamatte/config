@@ -18,29 +18,27 @@ Config { font = "xft:Hack:size=9:bold:antialias=true"
        , overrideRedirect = True
        , commands = [ Run Wireless "wlp2s0" ["-t","<essid>",
                                           "--normal","green","--high","red"] 10
-                    , Run Cpu ["-t", "<fn=1></fn> <total>%", "-L","3","-H","50",
-                               "--normal","green","--high","red"] 10
+                    , Run Cpu ["-t", "<fn=1></fn> <total>%", "-L","3","-H","50"] 10
                     , Run Memory ["-t"," <usedratio>%"] 10
                     , Run Swap [] 10
                     , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
-                    , Run Battery        [ "--template" , "<fn=1></fn> <acstatus>"
-                             , "--Low"      , "10"        -- units: %
-                             , "--High"     , "80"        -- units: %
-                             , "--low"      , "darkred"
-                             , "--normal"   , "darkorange"
-                             , "--high"     , "darkgreen"
-
+                    , Run Battery        [ "--template" , "<acstatus>"
+                             , "-L" , "20"        -- units: %
+                             , "-H" , "80"        -- units: %
+                             , "-l" , "darkred"
                              , "--" -- battery specific options
-                                       -- discharging status
-                                       , "-o"	, "<left>% (<timeleft>)"
-                                       -- AC "on" status
-                                       , "-O"	, "<fc=#dAA520>Charging</fc>"
-                                       -- charged status
-                                       , "-i"	, "<fc=#006000>Charged</fc>"
+                                       , "-o"	        , "<left>%"      -- discharging status
+                                       , "-O"	        , "<fn=1></fn>" -- AC "on" status
+                                       , "-i"         , "<fn=1></fn>" -- charged status
+                                       , "-L"         , "20"           -- units: %
+                                       , "-H"         , "80"           -- units: %
+                                       , "--highs"    , "<fn=1> </fn>"
+                                       , "--mediums"  , "<fn=1> </fn>"
+                                       , "--lows"     , "<fn=1> </fn>"
                              ] 50
                     , Run StdinReader
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "<fn=1></fn> %wlp2s0wi%}%StdinReader%{<fn=1></fn> %date%  %battery%"
+       , template = "<fn=1></fn> %wlp2s0wi%  %cpu%}%StdinReader%{<fn=1></fn> %date%  %battery%"
        }
