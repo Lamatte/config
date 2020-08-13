@@ -43,6 +43,9 @@ myAdditionalKeys =
 myKeys =
   [ ("<XF86MonBrightnessUp>", spawn "~/.xmonad/brightness.sh +5")
   , ("<XF86MonBrightnessDown>", spawn "~/.xmonad/brightness.sh -5")
+  , ("<XF86AudioLowerVolume>", spawn "amixer -q sset Master 2%-")
+  , ("<XF86AudioRaiseVolume>", spawn "amixer -q sset Master 2%+")
+  , ("<XF86AudioMute>", spawn "amixer set Master toggle")
   ]
 
 myLayout = avoidStruts $

@@ -30,7 +30,7 @@ export DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 echo "Using configuration from directory $DIR"
 
 header "Installing packages..."
-sudo pacman -S --needed git vim rxvt-unicode picom slock xmonad xmobar feh xautolock dmenu clamav
+sudo pacman -S --needed git vim rxvt-unicode picom slock xmonad xmobar feh xautolock dmenu clamav alsa-utils
 
 header "Checking yay..."
 which yay || install_yay
