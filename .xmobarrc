@@ -21,7 +21,11 @@ Config { font = "xft:Hack:size=9:bold:antialias=true"
                     , Run Cpu ["-t", "<fn=1></fn> <total>%", "-L","3","-H","50"] 10
                     , Run Memory ["-t"," <usedratio>%"] 10
                     , Run Swap [] 10
-                    , Run Volume "default" "Master" [ "--template", "<fn=1></fn> <volume>%" ] 10
+                    , Run Volume "default" "Master" [ 
+                               "--template", "<fn=1></fn> <volume>%"
+                             , "--" -- volume specific options
+                                       , "-o"	        , "yo"      -- off status
+                             ] 10
                     , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
                     , Run Battery        [
                                "--template" , "<acstatus>"
@@ -37,7 +41,7 @@ Config { font = "xft:Hack:size=9:bold:antialias=true"
                                        , "--highs"    , "<fn=1> </fn>"
                                        , "--mediums"  , "<fn=1> </fn>"
                                        , "--lows"     , "<fn=1> </fn>"
-                             ] 50
+                             ] 10
                     , Run StdinReader
                     ]
        , sepChar = "%"

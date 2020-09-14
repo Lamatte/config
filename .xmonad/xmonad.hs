@@ -8,6 +8,7 @@ import XMonad.Layout.Grid
 import XMonad.Layout.NoBorders
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig (additionalKeys, additionalKeysP)
+import XMonad.Actions.WorkspaceNames
 import System.IO
 
 main = xmonad =<< statusBar "xmobar" myPP toggleStrutsKey myConfig
@@ -25,6 +26,7 @@ myConfig = azertyConfig
   , modMask  = mod4Mask
   , startupHook   = myStartupHook
   , layoutHook   = myLayout
+  , logHook   = myLogHook
   , focusedBorderColor = "#5e8d87"
   , normalBorderColor = "#282a2e"
   } `additionalKeys` myAdditionalKeys `additionalKeysP` myKeys
@@ -36,8 +38,12 @@ myStartupHook =
   <+> spawn "feh --bg-scale ~/.xmonad/wallpapers/blurred.jpg"
   <+> spawn "xautolock -time 10 -locker slock"
 
+myLogHook = 
+  workspaceNamesPP xmobarPP >>= dynamicLogString >>= xmonadPropLog
+
 myAdditionalKeys =
   [ ((mod4Mask .|. shiftMask, xK_z), spawn "slock")
+    , ((mod4Mask .|. shiftMask, xK_r      ), renameWorkspace def)
   ]
 
 myKeys =
@@ -45,7 +51,7 @@ myKeys =
   , ("<XF86MonBrightnessDown>", spawn "~/.xmonad/brightness.sh -5")
   , ("<XF86AudioLowerVolume>", spawn "amixer -q sset Master 2%-")
   , ("<XF86AudioRaiseVolume>", spawn "amixer -q sset Master 2%+")
-  , ("<XF86AudioMute>", spawn "amixer set Master toggle")
+  , ("<XF86AudioMute>", spawn "amixer set Speaker+LO toggle")
   ]
 
 myLayout = avoidStruts $
