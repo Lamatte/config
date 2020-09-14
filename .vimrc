@@ -84,3 +84,6 @@ let g:LanguageClient_diagnosticsDisplay = {
 " Fuzzy finder
 set rtp+=~/.vim/bundle/fzf
 nnoremap ff :FZF<CR>
+
+" Vim rooter
+let g:rooter_silent_chdir = 1
