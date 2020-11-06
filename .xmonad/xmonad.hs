@@ -16,7 +16,7 @@ import System.IO
 
 main = xmonad =<< statusBar "xmobar" myPP toggleStrutsKey myConfig
 
-myWorkspaces = ["1:console", "2:web", "3:im", "4:code", "5", "6", "7", "8", "9"]
+myWorkspaces = ["1:console", "2:web", "3:im", "4:code", "5", "6", "7", "8", "9:misc"]
 
 toggleStrutsKey XConfig { XMonad.modMask = modMask } = (modMask, xK_b)
 
@@ -65,7 +65,11 @@ myLayout = avoidStruts $ workspaceLayouts
 defaultLayouts = Tall 1 (2/100) (2/3) ||| Mirror (Tall 1 (2/100) (2/3)) ||| Full ||| Grid
 
 workspaceLayouts =
+  onWorkspace "1:console" Grid $
+  onWorkspace "2:web" Full $
   onWorkspace "3:im" imLayout $
+  onWorkspace "4:code" Full $
+  onWorkspace "9:misc" Grid $
   defaultLayouts
   where
     imLayout = withIM (1%7) (Title "Liste de contacts") Grid
