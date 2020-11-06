@@ -5,6 +5,9 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.SetWMName
 import XMonad.Hooks.ManageDocks
 import XMonad.Layout.Grid
+import XMonad.Layout.IM
+import XMonad.Layout.PerWorkspace
+import Data.Ratio ((%))
 import XMonad.Layout.NoBorders
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig (additionalKeys, additionalKeysP)
@@ -12,6 +15,8 @@ import XMonad.Actions.WorkspaceNames
 import System.IO
 
 main = xmonad =<< statusBar "xmobar" myPP toggleStrutsKey myConfig
+
+myWorkspaces = ["1:console", "2:web", "3:im", "4:code", "5", "6", "7", "8", "9"]
 
 toggleStrutsKey XConfig { XMonad.modMask = modMask } = (modMask, xK_b)
 
@@ -23,6 +28,7 @@ myPP = xmobarPP
 
 myConfig = azertyConfig
   { terminal = "urxvt"
+  , workspaces = myWorkspaces
   , modMask  = mod4Mask
   , startupHook   = myStartupHook
   , layoutHook   = myLayout
@@ -54,8 +60,12 @@ myKeys =
   , ("<XF86AudioMute>", spawn "amixer set Speaker+LO toggle")
   ]
 
-myLayout = avoidStruts $
-  Tall 1 (2/100) (2/3)
-  ||| Mirror (Tall 1 (2/100) (2/3))
-  ||| Full
-  ||| Grid
+myLayout = avoidStruts $ workspaceLayouts
+
+defaultLayouts = Tall 1 (2/100) (2/3) ||| Mirror (Tall 1 (2/100) (2/3)) ||| Full ||| Grid
+
+workspaceLayouts =
+  onWorkspace "3:im" imLayout $
+  defaultLayouts
+  where
+    imLayout = withIM (1%7) (Title "Liste de contacts") Grid
