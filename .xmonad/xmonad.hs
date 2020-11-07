@@ -29,6 +29,7 @@ myPP = xmobarPP
 myConfig = azertyConfig
   { terminal = "urxvt"
   , workspaces = myWorkspaces
+  , manageHook = myManageHook <+> manageHook defaultConfig
   , modMask  = mod4Mask
   , startupHook   = myStartupHook
   , layoutHook   = myLayout
@@ -72,4 +73,10 @@ workspaceLayouts =
   onWorkspace "9:misc" Grid $
   defaultLayouts
   where
-    imLayout = withIM (1%7) (Title "Liste de contacts") Grid
+    imLayout = withIM (1%6) (Title "Liste de contacts") Grid
+
+myManageHook = composeAll
+   [ className =? "Pidgin"         --> doShift "3:im"
+   , className =? "firefox"        --> doShift "2:web"
+   , className =? "jetbrains-idea" --> doShift "4:code"
+   ]
