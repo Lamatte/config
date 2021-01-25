@@ -36,7 +36,7 @@ header "Checking yay..."
 which yay || install_yay
 
 header "Installing AUR packages"
-yay -S --needed awesome-terminal-fonts
+yay -S --needed awesome-terminal-fonts sac-core-legacy
 
 header "Installing Vundle.vim..."
 if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
