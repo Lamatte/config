@@ -6,6 +6,7 @@ export SPRING_PROFILES_ACTIVE=local
 export TERM=xterm-256color
 export FZF_DEFAULT_COMMAND='fd --type f'
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # Disable bell
 xset b off
