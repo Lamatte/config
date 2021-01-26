@@ -16,7 +16,7 @@ import System.IO
 
 main = xmonad =<< statusBar "xmobar" myPP toggleStrutsKey myConfig
 
-myWorkspaces = ["1:console", "2:web", "3:im", "4:code", "5", "6", "7", "8:coopnet", "9:misc"]
+myWorkspaces = ["1:console", "2:web", "3:im", "4:code", "5:mail", "6", "7", "8:coopnet", "9:misc"]
 
 toggleStrutsKey XConfig { XMonad.modMask = modMask } = (modMask, xK_b)
 
@@ -44,6 +44,8 @@ myStartupHook =
   <+> spawn "picom --config ~/.xmonad/picom.conf"
   <+> spawn "feh --bg-scale ~/.xmonad/wallpapers/blurred.jpg"
   <+> spawn "xautolock -time 10 -locker slock"
+  <+> spawn "pidgim"
+  <+> spawn "evolution"
 
 myLogHook = 
   workspaceNamesPP xmobarPP >>= dynamicLogString >>= xmonadPropLog
@@ -70,6 +72,7 @@ workspaceLayouts =
   onWorkspace "2:web" Full $
   onWorkspace "3:im" imLayout $
   onWorkspace "4:code" Full $
+  onWorkspace "5:mail" Full $
   onWorkspace "8:coopnet" Full $
   onWorkspace "9:misc" Grid $
   defaultLayouts
@@ -80,5 +83,6 @@ myManageHook = composeAll
    [ className =? "Pidgin"         --> doShift "3:im"
    , className =? "firefox"        --> doShift "2:web"
    , className =? "jetbrains-idea" --> doShift "4:code"
+   , className =? "Evolution"      --> doShift "5:mail"
    , className =? "MultimediaConference" --> doShift "8:coopnet"
    ]
