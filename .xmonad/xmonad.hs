@@ -44,8 +44,6 @@ myStartupHook =
   <+> spawn "picom --config ~/.xmonad/picom.conf"
   <+> spawn "feh --bg-scale ~/.xmonad/wallpapers/blurred.jpg"
   <+> spawn "xautolock -time 10 -locker slock"
-  <+> spawn "pidgim"
-  <+> spawn "evolution"
 
 myLogHook = 
   workspaceNamesPP xmobarPP >>= dynamicLogString >>= xmonadPropLog
